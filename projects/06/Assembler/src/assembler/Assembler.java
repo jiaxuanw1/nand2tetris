@@ -70,7 +70,7 @@ public class Assembler {
                         address = symbolTable.getAddress(symbol);
                     }
                     String binaryAddress = Integer.toBinaryString(address);
-                    bin = "0" + "0".repeat(15 - binaryAddress.length()) + binaryAddress;
+                    bin = "0".repeat(16 - binaryAddress.length()) + binaryAddress;
                     break;
                 case C_COMMAND:
                     String dest = code.dest(parser.dest());

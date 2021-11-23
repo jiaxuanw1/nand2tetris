@@ -21,7 +21,6 @@ public class Parser {
             asm = new ArrayList<String>();
             BufferedReader br = new BufferedReader(new FileReader(filepath));
             String line = br.readLine();
-
             while (line != null) {
                 // Remove comments from line
                 if (line.contains("//")) {
@@ -84,14 +83,22 @@ public class Parser {
         if (commandType() != CommandType.C_COMMAND) {
             return null;
         }
-        int startIndex = 0;
-        int endIndex = currentCommand.length();
+
+        int startIndex;
+        int endIndex;
+
         if (currentCommand.contains("=")) {
             startIndex = currentCommand.indexOf("=") + 1;
+        } else {
+            startIndex = 0;
         }
+
         if (currentCommand.contains(";")) {
             endIndex = currentCommand.indexOf(";");
+        } else {
+            endIndex = currentCommand.length();
         }
+
         return currentCommand.substring(startIndex, endIndex);
     }
 
